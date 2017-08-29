@@ -1,97 +1,78 @@
-<style type="text/css">
-  .carddemoBasicUsage .card-media {
-  background-color: #999999; }
-</style>
-<div ng-controller="AppCtrl" ng-cloak >
-  <md-content class="md-padding" layout-xs="column" layout="row">
-    <div flex-xs flex-gt-xs="50" layout="column">
-      <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
-        <md-card-title>
-          <md-card-title-text>
-            <span class="md-headline">Card with image</span>
-            <span class="md-subhead">Large</span>
-          </md-card-title-text>
-          <md-card-title-media>
-            <div class="md-media-lg card-media"></div>
-          </md-card-title-media>
-        </md-card-title>
-        <md-card-actions layout="row" layout-align="end center">
-          <md-button>Action 1</md-button>
-          <md-button>Action 2</md-button>
-        </md-card-actions>
-      </md-card>
-      <md-card md-theme="{{ showDarkTheme ? 'dark-orange' : 'default' }}" md-theme-watch>
-        <md-card-title>
-          <md-card-title-text>
-            <span class="md-headline">Card with image</span>
-            <span class="md-subhead">Extra Large</span>
-          </md-card-title-text>
-        </md-card-title>
-        <md-card-content layout="row" layout-align="space-between">
-          <div class="md-media-xl card-media"></div>
+<div layout="column" style="height:500px;" ng-cloak>
 
-          <md-card-actions layout="column">
-            <md-button class="md-icon-button" aria-label="Favorite">
-              <md-icon md-svg-icon="img/icons/favorite.svg"></md-icon>
-            </md-button>
-            <md-button class="md-icon-button" aria-label="Settings">
-              <md-icon md-svg-icon="img/icons/menu.svg"></md-icon>
-            </md-button>
-            <md-button class="md-icon-button" aria-label="Share">
-              <md-icon md-svg-icon="img/icons/share-arrow.svg"></md-icon>
-            </md-button>
-          </md-card-actions>
-        </md-card-content>
-      </md-card>
-    </div>
-    <div flex-xs flex-gt-xs="50" layout="column">
-      <md-card md-theme="{{ showDarkTheme ? 'dark-purple' : 'default' }}" md-theme-watch>
-        <md-card-title>
-          <md-card-title-text>
-            <span class="md-headline">Card with image</span>
-            <span class="md-subhead">Small</span>
-          </md-card-title-text>
-          <md-card-title-media>
-            <div class="md-media-sm card-media"></div>
-          </md-card-title-media>
-        </md-card-title>
-        <md-card-actions layout="row" layout-align="end center">
-          <md-button>Action 1</md-button>
-          <md-button>Action 2</md-button>
-        </md-card-actions>
-      </md-card>
-      <md-card md-theme="{{ showDarkTheme ? 'dark-blue' : 'default' }}" md-theme-watch>
-        <md-card-title>
-          <md-card-title-text>
-            <span class="md-headline">Card with image</span>
-            <span class="md-subhead">Medium</span>
-          </md-card-title-text>
-          <md-card-title-media>
-            <div class="md-media-md card-media"></div>
-          </md-card-title-media>
-        </md-card-title>
-        <md-card-actions layout="row" layout-align="end center">
-          <md-button>Action 1</md-button>
-          <md-button>Action 2</md-button>
-        </md-card-actions>
-      </md-card>
-      <div layout layout-padding layout-align="center end" style="height:200px">
-        <md-checkbox ng-model="showDarkTheme">Use 'Dark' Themed Cards</md-checkbox>
+  <section layout="row" flex>
+
+    <md-sidenav
+        class="md-sidenav-left"
+        md-component-id="left"
+        md-is-locked-open="$mdMedia('gt-md')"
+        md-whiteframe="4">
+
+      <md-toolbar class="md-theme-indigo">
+        <h1 class="md-toolbar-tools">Sidenav Left</h1>
+      </md-toolbar>
+      <md-content layout-padding>
+        <md-button ng-click="close()" class="md-primary" hide-gt-md>
+          Close Sidenav Left
+        </md-button>
+        <p hide show-gt-md>
+          This sidenav is locked open on your device. To go back to the default behavior,
+          narrow your display.
+        </p>
+      </md-content>
+
+    </md-sidenav>
+
+    <md-content flex layout-padding>
+
+      <div layout="column" layout-align="top center">
+        <p>
+        The left sidenav will 'lock open' on a medium (>=960px wide) device.
+        </p>
+        <p>
+        The right sidenav will focus on a specific child element.
+        </p>
+
+        <div>
+          <md-button ng-click="toggleLeft()"
+            class="md-primary" hide-gt-md>
+            Toggle left
+          </md-button>
+        </div>
+
+        <div>
+          <md-button ng-click="toggleRight()"
+            ng-hide="true"
+            class="md-primary">
+            Toggle right
+          </md-button>
+        </div>
       </div>
-    </div>
-  </md-content>
+
+      <div flex></div>
+
+    </md-content>
+
+    <md-sidenav class="md-sidenav-right md-whiteframe-4dp" md-component-id="right">
+
+      <md-toolbar class="md-theme-light">
+        <h1 class="md-toolbar-tools">Sidenav Right</h1>
+      </md-toolbar>
+      <md-content layout-padding>
+        <form>
+          <md-input-container>
+            <label for="testInput">Test input</label>
+            <input type="text" id="testInput"
+                   ng-model="data" md-autofocus>
+          </md-input-container>
+        </form>
+        <md-button ng-click="close()" class="md-primary">
+          Close Sidenav Right
+        </md-button>
+      </md-content>
+
+    </md-sidenav>
+
+  </section>
+
 </div>
-<script type="text/javascript">
-
-  angular.module('cardDemo1', ['ngMaterial'])
-
-.controller('AppCtrl', function($scope) {
-  $scope.imagePath = 'img/washedout.png';
-})
-.config(function($mdThemingProvider) {
-  $mdThemingProvider.theme('dark-grey').backgroundPalette('grey').dark();
-  $mdThemingProvider.theme('dark-orange').backgroundPalette('orange').dark();
-  $mdThemingProvider.theme('dark-purple').backgroundPalette('deep-purple').dark();
-  $mdThemingProvider.theme('dark-blue').backgroundPalette('blue').dark();
-});
-</script>

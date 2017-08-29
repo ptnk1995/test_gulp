@@ -34,7 +34,11 @@
   "browser": {
     "angular": "./bower_components/angular/angular.js",
     "angular-ui-bootstrap": "./bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js",
-    "angular-ui-router": "./bower_components/angular-ui-router/release/angular-ui-router.js"
+    "angular-animate": "./bower_components/angular-animate/angular-animate.js",
+    "angular-aria": "./bower_components/angular-aria/angular-aria.js",
+    "angular-messages": "./bower_components/angular-messages/angular-messages.js",
+    "angular-ui-router": "./bower_components/angular-ui-router/release/angular-ui-router.js",
+    "angular-material": "./bower_components/angular-material/angular-material.js"
   },
   "browserify-shim": {},
   "dependencies": {
